@@ -1,0 +1,160 @@
+﻿<UserControl x:Class="ClientesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Título -->
+        <TextBlock Text="Gestión de Clientes" FontSize="20" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="10"
+                   Foreground="#f3e8ff"/>
+
+        <!-- DataGrid para mostrar clientes -->
+        <DataGrid x:Name="dgClientes" Grid.Row="1" AutoGenerateColumns="False" 
+                  Margin="10" SelectionMode="Single"
+                  SelectionChanged="dgClientes_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
+                <DataGridTextColumn Header="Apellido" Binding="{Binding Apellido}" Width="*"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Botones para agregar, modificar y eliminar -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button x:Name="btnAgregar" Content="Agregar" Width="100" Margin="5" Click="btnAgregar_Click"
+                    Foreground="White">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#462ad8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#28aeed"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="30" CornerRadius="20" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="btnModificar" Content="Modificar" Width="100" Margin="5" Click="btnModificar_Click"
+                    Foreground="White">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#462ad8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#28aeed"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="30" CornerRadius="20" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="btnEliminar" Content="Eliminar" Width="100" Margin="5" Click="btnEliminar_Click"
+                    Foreground="White">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#462ad8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#28aeed"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="30" CornerRadius="20" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+
+        <!-- Formulario de Cliente (Oculto por defecto) -->
+        <Border x:Name="FormularioCliente" Grid.Row="1" Visibility="Collapsed" Background="LightGray" 
+                Margin="20" Padding="10" CornerRadius="10">
+            <StackPanel>
+                <TextBlock Text="Nombre:"/>
+                <TextBox x:Name="txtNombre"/>
+
+                <TextBlock Text="Apellido:"/>
+                <TextBox x:Name="txtApellido"/>
+
+                <TextBlock Text="Teléfono:"/>
+                <TextBox x:Name="txtTelefono"/>
+
+                <TextBlock Text="Email:"/>
+                <TextBox x:Name="txtEmail"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="2">
+                    <Button x:Name="btnGuardar" Content="Guardar" Width="100" Margin="5" Click="btnGuardar_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#462ad8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28aeed"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="100" Height="30" CornerRadius="20" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    
+                    
+                    
+                    <Button x:Name="btnCancelar" Content="Cancelar" Width="100" Margin="5" Click="btnCancelar_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#462ad8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28aeed"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="100" Height="30" CornerRadius="20" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Migración_a_WPF"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="#24105F">
+    <UserControl.Resources>
+        <!-- Estilo para personalizar la leyenda -->
+        <Style TargetType="lvc:DefaultLegend">
+            <Setter Property="Foreground" Value="#f8fafc"/>
+            <!-- Color del texto -->
+            <Setter Property="FontSize" Value="14"/>
+            <!-- Tamaño de la fuente -->
+            <Setter Property="FontWeight" Value="Bold"/>
+            <!-- Grosor de la fuente -->
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <!-- Definir dos columnas para los gráficos -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Gráfico de dona para clientes -->
+        <lvc:PieChart Name="ClientesChart" 
+                      Grid.Column="0"
+                      LegendLocation="Bottom" 
+                      InnerRadius="100" 
+                      Hoverable="False" 
+                      DataTooltip="{x:Null}">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries Title="Clientes" 
+                               Values="300" 
+                               DataLabels="True" 
+                               LabelPosition="InsideSlice" 
+                               Foreground="White"
+                               Fill="#db2777"/>
+            </lvc:PieChart.Series>
+        </lvc:PieChart>
+
+        <!-- Gráfico de dona para productos -->
+        <lvc:PieChart Name="ProductosChart" 
+                      Grid.Column="1"
+                      LegendLocation="Bottom" 
+                      InnerRadius="100" 
+                      Hoverable="False" 
+                      DataTooltip="{x:Null}">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries Title="Productos" 
+                               Values="150" 
+                               DataLabels="True" 
+                               LabelPosition="InsideSlice" 
+                               Foreground="White"
+                               Fill="#fbbf24"/>
+                <!-- Color diferente para productos -->
+            </lvc:PieChart.Series>
+        </lvc:PieChart>
+    </Grid>
+</UserControl>

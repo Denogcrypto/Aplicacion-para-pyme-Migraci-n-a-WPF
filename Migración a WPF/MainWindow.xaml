@@ -1,0 +1,277 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Migración_a_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <!-- Fondo de la ventana -->
+    <Border CornerRadius="10">
+        <Border.Background>
+            <ImageBrush ImageSource="C:\Users\Denis\source\repos\Migración a WPF\Migración a WPF\Imagenes\GkDwZEfW8AE7oLz.jpg"
+                        Stretch="None"/>
+        </Border.Background>
+
+        <!-- Contenedor principal -->
+        <Grid>
+            <!-- Fondo semitransparente -->
+            <Border CornerRadius="14"
+                     Opacity="0.6"
+                     BorderThickness="1">
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#462ad8" Offset="0" />
+                        <GradientStop Color="#da34ae" Offset="0.75" />
+                        <GradientStop Color="#8a16c1" Offset="1" />
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                        <GradientStop Color="#060531" Offset="0" />
+                        <GradientStop Color="#1b1448" Offset="0.75" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <!-- Contenido de la ventana -->
+            <Grid>
+                <!-- Definición de filas -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <!-- Barra superior -->
+                    <RowDefinition Height="*"/>
+                    <!-- Contenido principal -->
+                </Grid.RowDefinitions>
+
+                <!-- Barra superior con botones -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="LOG IN"
+                               Foreground="DarkGray"
+                               FontSize="10"
+                               FontFamily="Segoe UI Emoji"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"/>
+
+                    <Button Name="btnMinimize"
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Segoe UI Emoji"
+                            Cursor="Hand"
+                            Grid.Column="1"
+                            Click="btnMinimize_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#28aeed"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#278bef"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18" CornerRadius="9" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Name="btnClosed"
+                            BorderThickness="0"
+                            Content="X"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Segoe UI Emoji"
+                            Cursor="Hand"
+                            Grid.Column="2"
+                            Click="btnClosed_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#da34ae"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#c62dae"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18" CornerRadius="9" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+                <!-- Contenido principal -->
+                <StackPanel Width="250"
+                            Grid.Row="1"
+                            Orientation="Vertical"
+                            Margin="0,35,0,0"
+                            VerticalAlignment="Top">
+                    <Image Source="C:\Users\Denis\source\repos\Migración a WPF\Migración a WPF\Imagenes\Group 1120.png"
+                           Width="100"
+                           Height="100"
+                           HorizontalAlignment="Center"/>
+                    <TextBlock Text="Gema Creative"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Medium"
+                               FontFamily="Segoe UI Light"
+                               HorizontalAlignment="Center"
+                               />
+
+                    <TextBlock Text="Somos todo en Uno"
+                               Foreground="LightGray"
+                               FontSize="14"
+                               FontWeight="Medium"
+                               FontFamily="Segoe UI Light"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="0,5,0,0"/>
+
+                    <TextBlock Text="Usuario"
+                                Foreground="DarkGray"
+                                FontSize="14"
+                                FontWeight="Medium"
+                                FontFamily="Segoe UI Light"
+                                
+                                Margin="0,35,0,0"/>
+                    <TextBox Name="txtUser"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="Segoe UI Emoji"
+                              
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,1"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="35,0,0,0">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="C:\Users\Denis\source\repos\Migración a WPF\Migración a WPF\Imagenes\icons8-user-24 (1).png"
+                                        Stretch="None"
+                                        AlignmentX="Left"
+                                        ></ImageBrush>
+                        </TextBox.Background>
+                        
+                    </TextBox>
+
+
+
+                    <TextBlock Text="Contraseña"
+            Foreground="DarkGray"
+            FontSize="14"
+            FontWeight="Medium"
+            FontFamily="Segoe UI Light"
+            Margin="0,15,0,0"/>
+             
+                    
+                    
+                    
+                    <PasswordBox Name="txtPassword"
+         FontSize="13"
+         FontWeight="Medium"
+         FontFamily="Segoe UI Emoji"
+          
+         Foreground="White"
+         CaretBrush="LightGray"
+         BorderBrush="DarkGray"
+         BorderThickness="0,0,0,1"
+         Height="28"
+         VerticalContentAlignment="Center"
+         Margin="0,5,0,0"
+         Padding="35,0,0,0">
+                        <PasswordBox.Background>
+                            <ImageBrush ImageSource="C:\Users\Denis\source\repos\Migración a WPF\Migración a WPF\Imagenes\icons8-key-24 (2).png"
+                    Stretch="None"
+                    AlignmentX="Left"
+                    ></ImageBrush>
+                        </PasswordBox.Background>
+
+                    </PasswordBox>
+
+
+                    <Button Name="btnLogin"
+                           BorderThickness="0"
+                           Content="Entrar"
+                           Foreground="White"
+                           FontSize="12"
+                           FontFamily="Segoe UI Emoji"
+                           Cursor="Hand"
+                           Grid.Column="2"
+                           Margin="0,50,0,0"
+                           Click="btnLogin_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#462ad8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28aeed"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" Height="40" CornerRadius="20" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0,15,0,0">
+                        <TextBlock Text="Olvidaste tu contraseña?"
+                        Foreground="DarkGray"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        FontFamily="Segoe UI Light"
+                        />
+
+                    <TextBlock Text="Cambiar contraseña"
+                         Foreground="White"
+                         FontSize="12"
+                         FontWeight="Medium"
+                         FontFamily="Segoe UI Light"
+                         Cursor="Hand"
+                         Margin="8,0,0,0"/>
+                    </StackPanel>
+
+
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
